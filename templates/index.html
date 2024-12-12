@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flask Todo App</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .todo-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .todo-item.completed {
+            background-color: #e6ffe6;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Todo List</h1>
+    <form action="{{ url_for('add_todo') }}" method="post">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <button type="submit">Add Todo</button>
+    </form>
+
+    <div class="todo-list">
+        {% for todo in todos %}
+            <div class="todo-item {% if todo.completed %}completed{% endif %}">
+                <h3>{{ todo.title }}</h3>
+                <p>{{ todo.description }}</p>
+                <p>Status: {% if todo.completed %}Completed{% else %}Pending{% endif %}</p>
+                <a href="{{ url_for('complete_todo', todo_id=todo._id) }}">Mark as Complete</a>
+                <a href="{{ url_for('update_todo', todo_id=todo._id) }}">Update</a>
+                <a href="{{ url_for('delete_todo', todo_id=todo._id|string) }}">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
