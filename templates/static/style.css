@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Section */
+.form-section {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Todo List */
+.todo-section {
+    margin-top: 20px;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.todo-item.completed {
+    text-decoration: line-through;
+    background-color: #e6ffe6;
+}
+
+.todo-content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.todo-content p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn.complete {
+    background-color: #28a745;
+}
+
+.action-btn.complete:hover {
+    background-color: #218838;
+}
+
+.action-btn.update {
+    background-color: #007bff;
+}
+
+.action-btn.update:hover {
+    background-color: #0056b3;
+}
+
+.action-btn.delete {
+    background-color: #dc3545;
+}
+
+.action-btn.delete:hover {
+    background-color: #c82333;
+}
+
+/* Update Form */
+.update-form input[type="text"] {
+    margin-bottom: 15px;
+}
+
+.update-form button {
+    background-color: #007bff;
+    font-weight: bold;
+}
+
+.update-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}

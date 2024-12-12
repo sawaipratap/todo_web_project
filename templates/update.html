@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Todo</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Update Todo</h1>
-    <form action="{{ url_for('update_todo', todo_id=todo._id) }}" method="post">
-        <input type="text" name="title" placeholder="Title" value="{{ todo.title }}" required>
-        <input type="text" name="description" placeholder="Description" value="{{ todo.description }}" required>
-        <button type="submit">Update</button>
-    </form>
+    <main class="container">
+        <h1>Update Todo</h1>
+        <form action="{{ url_for('update_todo', todo_id=todo._id) }}" method="post" class="update-form">
+            <input type="text" name="title" placeholder="Title" value="{{ todo.title }}" required>
+            <input type="text" name="description" placeholder="Description" value="{{ todo.description }}" required>
+            <button type="submit">Update Todo</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="back-link">Back to Todo List</a>
+    </main>
 </body>
 </html>

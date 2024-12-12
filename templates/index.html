@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flask Todo App</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-        .todo-item {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .todo-item.completed {
-            background-color: #e6ffe6;
-            text-decoration: line-through;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>My Todo List</h1>
-    <form action="{{ url_for('add_todo') }}" method="post">
-        <input type="text" name="title" placeholder="Title" required>
-        <input type="text" name="description" placeholder="Description" required>
-        <button type="submit">Add Todo</button>
-    </form>
-
-    <div class="todo-list">
-        {% for todo in todos %}
-            <div class="todo-item {% if todo.completed %}completed{% endif %}">
-                <h3>{{ todo.title }}</h3>
-                <p>{{ todo.description }}</p>
-                <p>Status: {% if todo.completed %}Completed{% else %}Pending{% endif %}</p>
-                <a href="{{ url_for('complete_todo', todo_id=todo._id) }}">Mark as Complete</a>
-                <a href="{{ url_for('update_todo', todo_id=todo._id) }}">Update</a>
-                <a href="{{ url_for('delete_todo', todo_id=todo._id|string) }}">Delete</a>
-            </div>
-        {% endfor %}
-    </div>
+    <header>
+        <h1>My Todo List</h1>
+    </header>
+    <main class="container">
+        <section class="form-section">
+            <form action="{{ url_for('add_todo') }}" method="post">
+                <input type="text" name="title" placeholder="Enter a Title" required>
+                <input type="text" name="description" placeholder="Enter a Description" required>
+                <button type="submit">Add Todo</button>
+            </form>
+        </section>
+        <section class="todo-section">
+            <ul class="todo-list">
+                {% for todo in todos %}
+                <li class="todo-item {% if todo.completed %}completed{% endif %}">
+                    <div class="todo-content">
+                        <h3>{{ todo.title }}</h3>
+                        <p>{{ todo.description }}</p>
+                    </div>
+                    <div class="todo-actions">
+                        <a href="{{ url_for('complete_todo', todo_id=todo._id) }}" class="action-btn complete">Complete</a>
+                        <a href="{{ url_for('update_todo', todo_id=todo._id) }}" class="action-btn update">Update</a>
+                        <a href="{{ url_for('delete_todo', todo_id=todo._id) }}" class="action-btn delete">Delete</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
