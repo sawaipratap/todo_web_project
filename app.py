@@ -2,11 +2,13 @@ from flask import Flask, request, redirect, url_for, render_template
 from pymongo import MongoClient
 from bson import ObjectId
 
+from config import MongoUrl
+
 app = Flask(__name__)
 
 # Connect to MongoDB
 # Update the URI as needed if using remote database (e.g. MongoDB Atlas)
-client = client = MongoClient("mongodb+srv://user1:XSgQiZs6HPsIGwpW@todo-list.6xnwm.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true")
+client = client = MongoClient(MongoUrl)
 db = client["todo_database"]
 collection = db["todos"]
 

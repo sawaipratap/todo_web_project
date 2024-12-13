@@ -78,6 +78,7 @@ form button:hover {
     margin: 0;
 }
 
+/* Todo List */
 .todo-item {
     display: flex;
     justify-content: space-between;
@@ -90,8 +91,13 @@ form button:hover {
 }
 
 .todo-item.completed {
-    text-decoration: line-through;
     background-color: #e6ffe6;
+}
+
+.todo-item.completed h3,
+.todo-item.completed p {
+    text-decoration: line-through;
+    color: #888;
 }
 
 .todo-content h3 {
