@@ -30,13 +30,6 @@ def add_todo():
         })
     return redirect(url_for('index'))
 
-@app.route('/complete/<todo_id>')
-def complete_todo(todo_id):
-    try:
-        collection.update_one({"_id": ObjectId(todo_id)}, {"$set": {"completed": True}})
-    except:
-        pass
-    return redirect(url_for('index'))
 
 @app.route('/delete/<todo_id>')
 def delete_todo(todo_id):
@@ -65,6 +58,19 @@ def update_todo(todo_id):
         if todo:
             todo['_id'] = str(todo['_id'])  # Convert ObjectId to string
         return render_template("update.html", todo=todo)
+    
+
+@app.route('/toggle/<todo_id>', methods=['POST'])
+def toggle_todo(todo_id):
+    try:
+        todo = collection.find_one({"_id": ObjectId(todo_id)})
+        if todo:
+            # Toggle the current status
+            new_status = not todo["completed"]
+            collection.update_one({"_id": ObjectId(todo_id)}, {"$set": {"completed": new_status}})
+    except Exception as e:
+        print(f"Error toggling todo: {e}")
+    return redirect(url_for('index'))
 
 # @app.teardown_appcontext
 # def close_db(exception):

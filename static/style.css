@@ -177,3 +177,9 @@ form button:hover {
 .back-link:hover {
     color: #0056b3;
 }
+
+
+.todo-actions input[type="checkbox"] {
+    transform: scale(2);
+    cursor: pointer;
+}

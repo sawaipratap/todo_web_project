@@ -21,19 +21,26 @@
         <section class="todo-section">
             <ul class="todo-list">
                 {% for todo in todos %}
-                <li class="todo-item {% if todo.completed %}completed{% endif %}">
-                    <div class="todo-content">
-                        <h3>{{ todo.title }}</h3>
-                        <p>{{ todo.description }}</p>
-                    </div>
-                    <div class="todo-actions">
-                        <a href="{{ url_for('complete_todo', todo_id=todo._id) }}" class="action-btn complete">Complete</a>
-                        <a href="{{ url_for('update_todo', todo_id=todo._id) }}" class="action-btn update">Update</a>
-                        <a href="{{ url_for('delete_todo', todo_id=todo._id) }}" class="action-btn delete">Delete</a>
-                    </div>
+                <li class="todo-item {{ 'completed' if todo.completed else '' }}">
+                  <div class="todo-content">
+                    <h3>{{ todo.title }}</h3>
+                    <p>{{ todo.description }}</p>
+                  </div>
+                  <div class="todo-actions">
+                    <a href="{{ url_for('update_todo', todo_id=todo['_id']) }}" class="action-btn update">Update</a>
+                    <a href="{{ url_for('delete_todo', todo_id=todo['_id']) }}" class="action-btn delete">Delete</a>
+                    <form action="{{ url_for('toggle_todo', todo_id=todo['_id']) }}" method="POST">
+                      <input 
+                        type="checkbox" 
+                        name="completed" 
+                        onchange="this.form.submit()" 
+                        {{ 'checked' if todo.completed else '' }}
+                      />
+                    </form>
+                  </div>
                 </li>
                 {% endfor %}
-            </ul>
+              </ul>
         </section>
     </main>
 </body>
