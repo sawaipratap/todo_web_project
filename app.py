@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect, url_for, render_template
 from pymongo import MongoClient
 from bson import ObjectId
-
 from config import MongoUrl
 
 app = Flask(__name__)
